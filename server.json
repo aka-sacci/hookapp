@@ -1,0 +1,29 @@
+{
+    "cervejas": [
+      {
+        "nome": "Budwiser",      
+        "dir": "bud.png"
+       },
+       {
+        "nome": "Bohemia",      
+        "dir": "boh.png"
+       },
+       {
+        "nome": "Eisenbahn",      
+        "dir": "eis.png"
+       },
+       {
+        "nome": "Heineken",      
+        "dir": "hei.png"
+       },
+       {
+        "nome": "Império",      
+        "dir": "imp.png"
+       },
+       {
+        "nome": "Sol",      
+        "dir": "sol.png"
+       }
+
+    ]
+  }

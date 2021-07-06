@@ -1,0 +1,21 @@
+.divMain{
+
+        
+    top: 50%; /* posiciona na metade da tela */
+    margin-top: -25px; /* e retrocede metade da altura */
+    background: #fff;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    text-align: center;
+
+    p{
+    font-family: 'Roboto', sans-serif;
+    }
+
+    .bottomText{
+        font-size: 22px;
+    font-weight: 900;
+     
+    }
+}
