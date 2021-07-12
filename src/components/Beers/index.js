@@ -1,32 +1,55 @@
 import beerStyles from './style.module.scss';
 import { api } from '../../services/api'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { sortBeer} from '../../services/sortBeer';
 
 
 
 export function Beers(){
   
-  const [beer, setBeer] = useState("Bohemia");
-  const [imgBeer, setImgBeer] = useState("boh.png");
-  const dirImg = "/Images/"
+  const [beer, setBeer] = useState();
+  const [imgBeer, setImgBeer] = useState();
+  const dirImg = "/Images/";
+  const [listBeer, setListBeer] = useState([]);
+  const [statusCode, setStatusCode] = useState();
+  
+  useEffect(() => {
+    apiCheck()
+  }, [])
 
-  function changeBeer(){
+
+  function apiCheck(){
     api.get('cervejas')
   .then(function (response) {
-    // chama função de aleatoriedade para escolher qual dos itens deve pegar
-
-    const size = response.data.length;
-    const beerDraw = sortBeer(size);
-    setBeer(response.data[beerDraw].nome);
-    setImgBeer(response.data[beerDraw].dir);
+    setListBeer(response.data);
+    setStatusCode(true);
+    setBeer("Clique em sort para sortear uma nova cerveja!")
+    setImgBeer("ok.png");
 
   }).catch(function (error) {
-    // erro
+    // nao se comunicou com a api
     setBeer("Não foi possível recuperar a cerveja! :/");
     setImgBeer("error.png");
+    setStatusCode(false);
   });
+  }
 
+  
+  function changeBeer(){
+    
+    if(statusCode === true){
+      // chama função de aleatoriedade para escolher qual dos itens deve pegar
+    const size = listBeer.length;
+    const beerDraw = sortBeer(size);
+    setBeer(listBeer[beerDraw].nome);
+    setImgBeer(listBeer[beerDraw].dir);
+    }
+    else
+    {
+    
+      apiCheck();
+      
+    }
   }
 
 

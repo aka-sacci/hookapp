@@ -6,6 +6,13 @@ This project was made just for fixation of some React.js and frontend concepts.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Versions
+
+v1.0 - Entire functional project.
+v1.1 - Performance upgrades - API is consulted just once time (during the page load). Support to possible errors during the requisition of data from API.
+
+
+
 
 ## Available Scripts
 
@@ -28,5 +35,3 @@ To run the app correctly, use this Script to start a Fake API made for get the d
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-
