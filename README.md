@@ -9,6 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Versions
 
 v1.0 - Entire functional project.
+
 v1.1 - Performance upgrades - API is consulted just once time (during the page load). Support to possible errors during the requisition of data from API.
 
 
