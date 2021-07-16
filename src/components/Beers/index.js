@@ -7,34 +7,56 @@ import { sortBeer} from '../../services/sortBeer';
 
 export function Beers(){
   
-  const [beer, setBeer] = useState();
-  const [imgBeer, setImgBeer] = useState();
+  //CONSTS
+  const [beer, setBeer] = useState("Carregando...");
+  const [imgBeer, setImgBeer] = useState("loading.gif");
   const dirImg = "/Images/";
   const [listBeer, setListBeer] = useState([]);
-  const [statusCode, setStatusCode] = useState();
+  const [statusCode, setStatusCode] = useState(true);
   
+  //USEEFFECTS
   useEffect(() => {
-    apiCheck()
-  }, [])
+
+    (async () => {
+      await api.get('cervejas')
+      .then(function (response) {
+        setListBeer(response.data);
+        setStatusCode(true);
+        setBeer("Clique em sort para sortear uma nova cerveja!")
+        setImgBeer("ok.png");
+    
+      }).catch(function (error) {
+        // nao se comunicou com a api
+        setBeer("Não foi possível recuperar a cerveja! :/");
+        setImgBeer("error.png");
+        setStatusCode(false);
+      });
+    })();
+
+    }, [])
 
 
+  //FUNCTIONS
   function apiCheck(){
-    api.get('cervejas')
-  .then(function (response) {
-    setListBeer(response.data);
-    setStatusCode(true);
-    setBeer("Clique em sort para sortear uma nova cerveja!")
-    setImgBeer("ok.png");
 
-  }).catch(function (error) {
-    // nao se comunicou com a api
-    setBeer("Não foi possível recuperar a cerveja! :/");
-    setImgBeer("error.png");
-    setStatusCode(false);
-  });
-  }
+        setBeer("Carregando...");
+        setImgBeer("loading.gif");
 
-  
+        api.get('cervejas')
+        .then(function (response) {
+          setListBeer(response.data);
+          setStatusCode(true);
+          setBeer("Clique em sort para sortear uma nova cerveja!")
+          setImgBeer("ok.png");
+      
+        }).catch(function (error) {
+          // nao se comunicou com a api
+          setBeer("Não foi possível recuperar a cerveja! :/");
+          setImgBeer("error.png");
+          setStatusCode(false);
+        });
+}
+
   function changeBeer(){
     
     if(statusCode === true){
@@ -46,9 +68,7 @@ export function Beers(){
     }
     else
     {
-    
       apiCheck();
-      
     }
   }
 

@@ -12,6 +12,8 @@ v1.0 - Entire functional project.
 
 v1.1 - Performance upgrades - API is consulted just once time (during the page load). Support to possible errors during the requisition of data from API.
 
+v1.2 - The last changes: Now the API is consuted by a Async call on useEffect(); Better organized code
+
 
 
 
